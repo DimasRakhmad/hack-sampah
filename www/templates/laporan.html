@@ -1,0 +1,31 @@
+<ion-view view-title="Pengaduan">
+    <ion-content>
+        <ion-list>
+            <ion-item ng-submit="submit()">
+                <label class="item item-input">
+                    <input type="text" placeholder="Nama" ng-model="input.nama">
+                </label>
+                <label class="item item-input">
+                    <input type="email" placeholder="Email" ng-model="input.email">
+                </label>
+                <!--ng-options="x.category for x in data"-->
+                <label class="item item-select">
+                    <div class="input-label">
+                        <h3>Kelurahan</h3>
+                    </div>
+                    <select ng-model="input.kelurahan_id" ng-options="x.kelurahan for x in data">
+                        <option value="">Pilih Kelurahan</option>
+                        <option ng-repeat="x in data" value="{{x.id}}">{{x.kelurahan}}</option>
+                    </select>
+                </label>
+                <label class="item item-input">
+                    <textarea placeholder="Keluhan" ng-model="input.keluhan"></textarea>
+                    <input type="hidden" ng-model="_token" value="{{ csrf_token() }}">
+                </label>
+                <button class="button button-full button-energized" name="submit" ng-click="submit()">
+                    Kirim
+                </button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
